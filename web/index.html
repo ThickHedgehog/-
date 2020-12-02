@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="wight=device-wight, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="eel.js"></script>
+</head>
+<body>
+<div class="title">
+    <h2 align="center">Циллиндрическая зубчатая передача</h2>
+    <h3 align="center">Геометрический расчет</h3>
+</div>
+
+<div class="params">
+    <h3 class="title_params">Определение параметров при</h3>
+
+    <select class="select_params" onchange="showDiv('hidden_div_1', 'hidden_div_2', this)">
+        <option>...</option>
+        <option value="0">заданном межосевом расстоянии aw</option>
+        <option value="1">заданных коэффициента смещения x1 и x2</option>
+    </select>
+</div>
+
+<!-- при заданном межосевом расстоянии aw -->
+<div id="hidden_div_1" class="center_distance_AW">
+    <h2 align="center"><i>Определение делительного межосевого расстояния</i></h2>
+
+    <form>
+        <input type="text" id="Distance_AW" placeholder="Введите межосевое расстояние">
+        <input type="text" id="Module_M" placeholder="Введите модуль М">
+        <input type="text" id="Angle_b" placeholder="Введите угол b">
+        <br/>
+        <input type="text" id="Quantity_Z1" placeholder="Введите число зубьев Z1">
+        <input type="text" id="Quantity_Z2" placeholder="Введите число зубьев Z2">
+        <br/>
+        <p id="AnswerA"></p>
+        <input type="button" id="A_btn" value="Рассчитать a" onclick="CalcA()">
+    </form>
+
+    <h2 align="center"><i>Определение углов at и atw</i></h2>
+
+    <form>
+        <p id="AnswerAt"></p>
+        <p id="AnswerAtw"></p>
+        <input type="button" id="Angles_btn" value="Рассчитать углы" onclick="CalcAt(); CalcAtw()">
+    </form>
+
+    <h2 align="center"><i>Коэффициента суммы смещений</i></h2>
+
+    <form>
+        <p id="AnswerXe"></p>
+        <input type="button" id="Sum_Xe_btn" value="Рассчитать Xe" onclick="CalcXe()">
+    </form>
+
+    <h2 align="center"><i>Определение коэффициентов смещения</i></h2>
+    <h3 class="title_displacement_factor">Выбор коэффициента смещения для</h3>
+
+    <select class="select_displacement_factor" onchange="showDiv('kinematic_div', 'power_div', this)">
+        <option>...</option>
+        <option value="0">кинематической передачи</option>
+        <option value="1">силовой передачи</option>
+    </select>
+    <p id="SelectedAngle"></p>
+</div>
+
+<!-- для кинематической передачи -->
+<div id="kinematic_div">
+    <form>
+        <input type="button" id="Kinematic_btn1" value="x1 = 0 и x2 = 0" onclick="SelectedAngle('SelectedAngle', this)">
+        <input type="button" id="Kinematic_btn2" value="x1 = 0.3 и x2 = -0.3"
+               onclick="SelectedAngle('SelectedAngle', this)">
+    </form>
+</div>
+
+<!-- для силовой передачи -->
+
+<div id="power_div">
+    <form>
+        <input type="button" id="Power_btn1" value="x1 = 0 и x2 = 0" onclick="SelectedAngle('SelectedAngle', this)">
+        <input type="button" id="Power_btn2" value="x1 = 0.3 и x2 = -0.3"
+               onclick="SelectedAngle('SelectedAngle', this)">
+        <input type="button" id="Power_btn3" value="x1 = 0.5 и x2 = -0.5"
+               onclick="SelectedAngle('SelectedAngle', this)">
+    </form>
+</div>
+
+<!-- при заданных коэффициента смещения x1 и x2 -->
+<div id="hidden_div_2" class="displacement_factors">
+    <h2 align="center"><i>Определение угла зацепления</i></h2>
+    <h3 class="title_displacement_factor">Выберите коэффициенты смещения x1 и x2 для</h3>
+
+    <select class="select_displacement_factor" onchange="showDiv('kinematic_factor_div', 'power_factor_div', this)">
+        <option>...</option>
+        <option value="0">кинематической передачи</option>
+        <option value="1">силовой передачи</option>
+    </select>
+
+    <p id="SelectedAngle_2"></p>
+    <form id="kinematic_factor_div">
+        <input type="button" id="Kinematic_factor_btn1" value="x1 = 0 и x2 = 0"
+               onclick="SelectedAngle('SelectedAngle_2', this)">
+        <input type="button" id="Kinematic_factor_btn2" value="x1 = 0.3 и x2 = -0.3"
+               onclick="SelectedAngle('SelectedAngle_2', this)">
+    </form>
+
+    <form id="power_factor_div">
+        <input type="button" id="Power_factor_btn1" value="x1 = 0 и x2 = 0"
+               onclick="SelectedAngle('SelectedAngle_2', this)">
+        <input type="button" id="Power_factor_btn2" value="x1 = 0.3 и x2 = -0.3"
+               onclick="SelectedAngle('SelectedAngle_2', this)">
+        <input type="button" id="Power_factor_btn3" value="x1 = 0.5 и x2 = -0.5"
+               onclick="SelectedAngle('SelectedAngle_2', this)">
+    </form>
+
+    <form>
+        <input type="text" id="Sum_Xe" placeholder="Введите коэффициент Xe">
+        <input type="text" id="Tooth_z1" placeholder="Введите число зубьев Z1">
+        <input type="text" id="Tooth_z2" placeholder="Введите число зубьев Z2">
+        <br/>
+        <input type="text" id="Tooth_angle" placeholder="Введите угол профиля зуба at">
+        <input type="text" id="Long_a" placeholder="Введите коэффициент a">
+    </form>
+    <form>
+        <p id="answer_awt"></p>
+        <input type="button" id="AWT_btn" value="Рассчитать awt" onclick="CalcAtw2()">
+    </form>
+    <h2 align="center"><i>Определение межосевого расстояния</i></h2>
+    <form>
+        <p id="answer_aw"></p>
+        <input type="button" id="AW_btn" value="Рассчитать aw" onclick="CalcAw()">
+    </form>
+</div>
+
+<div class="wheel_diameter">
+    <h2 align="center">Расчет диаметров зубчатых колес</h2>
+    <h3 align="center"><i>Определение длительных диаметров</i></h3>
+
+    <form>
+        <p id="AnswerD1"></p>
+        <p id="AnswerD2"></p>
+        <input type="button" id="D1_D2_btn" value="Рассчитать d1 и d2">
+    </form>
+
+    <h3 align="center"><i>Определение начальных диаметров</i></h3>
+
+    <form>
+        <p id="AnswerDw1"></p>
+        <p id="AnswerDw2"></p>
+        <input type="button" id="Dw1_Dw2_btn" value="Рассчитать dw1 и dw2">
+    </form>
+
+    <h3 align="center"><i>Определение коэффициентов смещения</i></h3>
+
+    <form>
+        <p id="Answer_y"></p>
+        <p id="Answer_dy"></p>
+        <input type="button" id="y_dy_btn" value="Рассчитать y и dy">
+    </form>
+
+    <h3 align="center"><i>Определение диаметров зубьев</i></h3>
+
+    <form>
+        <p id="Answer_da"></p>
+        <p id="Answer_df"></p>
+        <input type="button" id="da_df_btn" value="Рассчитать da и df">
+    </form>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
