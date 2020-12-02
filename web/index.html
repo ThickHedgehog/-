@@ -61,15 +61,16 @@
         <option value="0">кинематической передачи</option>
         <option value="1">силовой передачи</option>
     </select>
-    <p id="SelectedAngle"></p>
 </div>
 
 <!-- для кинематической передачи -->
 <div id="kinematic_div">
     <form>
-        <input type="button" id="Kinematic_btn1" value="x1 = 0 и x2 = 0" onclick="SelectedAngle('SelectedAngle', this)">
+        <p id="SelectedAngle1"></p>
+        <input type="button" id="Kinematic_btn1" value="x1 = 0 и x2 = 0"
+               onclick="SelectedAngle('SelectedAngle1', this)">
         <input type="button" id="Kinematic_btn2" value="x1 = 0.3 и x2 = -0.3"
-               onclick="SelectedAngle('SelectedAngle', this)">
+               onclick="SelectedAngle('SelectedAngle1', this)">
     </form>
 </div>
 
@@ -77,11 +78,12 @@
 
 <div id="power_div">
     <form>
-        <input type="button" id="Power_btn1" value="x1 = 0 и x2 = 0" onclick="SelectedAngle('SelectedAngle', this)">
+        <p id="SelectedAngle2"></p>
+        <input type="button" id="Power_btn1" value="x1 = 0 и x2 = 0" onclick="SelectedAngle('SelectedAngle2', this)">
         <input type="button" id="Power_btn2" value="x1 = 0.3 и x2 = -0.3"
-               onclick="SelectedAngle('SelectedAngle', this)">
+               onclick="SelectedAngle('SelectedAngle2', this)">
         <input type="button" id="Power_btn3" value="x1 = 0.5 и x2 = -0.5"
-               onclick="SelectedAngle('SelectedAngle', this)">
+               onclick="SelectedAngle('SelectedAngle2', this)">
     </form>
 </div>
 
@@ -96,15 +98,16 @@
         <option value="1">силовой передачи</option>
     </select>
 
-    <p id="SelectedAngle_2"></p>
     <form id="kinematic_factor_div">
+        <p id="SelectedAngle_1"></p>
         <input type="button" id="Kinematic_factor_btn1" value="x1 = 0 и x2 = 0"
-               onclick="SelectedAngle('SelectedAngle_2', this)">
+               onclick="SelectedAngle('SelectedAngle_1', this)">
         <input type="button" id="Kinematic_factor_btn2" value="x1 = 0.3 и x2 = -0.3"
-               onclick="SelectedAngle('SelectedAngle_2', this)">
+               onclick="SelectedAngle('SelectedAngle_1', this)">
     </form>
 
     <form id="power_factor_div">
+        <p id="SelectedAngle_2"></p>
         <input type="button" id="Power_factor_btn1" value="x1 = 0 и x2 = 0"
                onclick="SelectedAngle('SelectedAngle_2', this)">
         <input type="button" id="Power_factor_btn2" value="x1 = 0.3 и x2 = -0.3"

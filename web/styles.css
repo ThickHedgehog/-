@@ -24,7 +24,7 @@ select {
     color: #d1d3e3;
 }
 
-.select_params {
+.select_params, .select_displacement_factor {
     text-align: center;
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
 }
@@ -34,7 +34,8 @@ select {
     margin-left: 5%;
 }
 
-#AnswerA, #AnswerAt, #AnswerAtw, #AnswerXe, #SelectedAngle, #SelectedAngle_2, #answer_awt, #answer_aw {
+#AnswerA, #AnswerAt, #AnswerAtw, #AnswerXe, #SelectedAngle1, #SelectedAngle2, #SelectedAngle_1, #SelectedAngle_2,
+#answer_awt, #answer_aw {
     text-align: center;
     color: #d1d3e3;
     font-size: 1.3em;
@@ -69,11 +70,6 @@ select {
 #Dw1_Dw2_btn:hover, #y_dy_btn:hover, #da_df_btn:hover, #Sum_Xe_btn:hover {
     color: #fff;
     background-color: #2285f5;
-}
-
-.select_displacement_factor {
-    text-align: center;
-    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
 }
 
 .wheel_diameter {
