@@ -73,3 +73,19 @@ async function CalcAw() {
 
     document.getElementById("answer_aw").innerHTML = "Межосевое расстояние = " + await eel.calc_aw(Xe, Z1, Z2, at, a)();
 }
+
+async function CalcD1_1() {
+    let Z1 = document.getElementById("Quantity_Z1").value;
+    let M = document.getElementById("Module_M").value;
+    let b = document.getElementById("Angle_b").value;
+
+    document.getElementById("AnswerD1").innerHTML = "Длительный диаметр шестерни = " + await eel.calc_d1(Z1, M, b)();
+}
+
+async function CalcD2_1() {
+    let Z2 = document.getElementById("Quantity_Z2").value;
+    let M = document.getElementById("Module_M").value;
+    let b = document.getElementById("Angle_b").value;
+
+    document.getElementById("AnswerD2").innerHTML = "Длительный диаметр колеса = " + await eel.calc_d2(Z2, M, b)();
+}

@@ -61,29 +61,55 @@
         <option value="0">кинематической передачи</option>
         <option value="1">силовой передачи</option>
     </select>
-</div>
 
-<!-- для кинематической передачи -->
-<div id="kinematic_div">
-    <form>
+    <form id="kinematic_div">
         <p id="SelectedAngle1"></p>
         <input type="button" id="Kinematic_btn1" value="x1 = 0 и x2 = 0"
                onclick="SelectedAngle('SelectedAngle1', this)">
         <input type="button" id="Kinematic_btn2" value="x1 = 0.3 и x2 = -0.3"
                onclick="SelectedAngle('SelectedAngle1', this)">
     </form>
-</div>
 
-<!-- для силовой передачи -->
-
-<div id="power_div">
-    <form>
+    <form id="power_div">
         <p id="SelectedAngle2"></p>
         <input type="button" id="Power_btn1" value="x1 = 0 и x2 = 0" onclick="SelectedAngle('SelectedAngle2', this)">
         <input type="button" id="Power_btn2" value="x1 = 0.3 и x2 = -0.3"
                onclick="SelectedAngle('SelectedAngle2', this)">
         <input type="button" id="Power_btn3" value="x1 = 0.5 и x2 = -0.5"
                onclick="SelectedAngle('SelectedAngle2', this)">
+    </form>
+
+    <h2 align="center">Расчет диаметров зубчатых колес</h2>
+    <h3 align="center"><i>Определение длительных диаметров</i></h3>
+
+    <form>
+        <p id="AnswerD1"></p>
+        <p id="AnswerD2"></p>
+        <input type="button" id="D1_D2_btn" value="Рассчитать d1 и d2" onclick="CalcD1_1(); CalcD2_1()">
+    </form>
+
+    <h3 align="center"><i>Определение начальных диаметров</i></h3>
+
+    <form>
+        <p id="AnswerDw1"></p>
+        <p id="AnswerDw2"></p>
+        <input type="button" id="Dw1_Dw2_btn" value="Рассчитать dw1 и dw2">
+    </form>
+
+    <h3 align="center"><i>Определение коэффициентов смещения</i></h3>
+
+    <form>
+        <p id="Answer_y"></p>
+        <p id="Answer_dy"></p>
+        <input type="button" id="y_dy_btn" value="Рассчитать y и dy">
+    </form>
+
+    <h3 align="center"><i>Определение диаметров зубьев</i></h3>
+
+    <form>
+        <p id="Answer_da"></p>
+        <p id="Answer_df"></p>
+        <input type="button" id="da_df_btn" value="Рассчитать da и df">
     </form>
 </div>
 
@@ -133,40 +159,39 @@
         <p id="answer_aw"></p>
         <input type="button" id="AW_btn" value="Рассчитать aw" onclick="CalcAw()">
     </form>
-</div>
 
-<div class="wheel_diameter">
     <h2 align="center">Расчет диаметров зубчатых колес</h2>
     <h3 align="center"><i>Определение длительных диаметров</i></h3>
 
     <form>
-        <p id="AnswerD1"></p>
-        <p id="AnswerD2"></p>
-        <input type="button" id="D1_D2_btn" value="Рассчитать d1 и d2">
+        <input type="text" id="Module_M2" placeholder="Введите модуль М">
+        <p id="AnswerD1_2"></p>
+        <p id="AnswerD2_2"></p>
+        <input type="button" id="D1_D2_btn_2" value="Рассчитать d1 и d2">
     </form>
 
     <h3 align="center"><i>Определение начальных диаметров</i></h3>
 
     <form>
-        <p id="AnswerDw1"></p>
-        <p id="AnswerDw2"></p>
-        <input type="button" id="Dw1_Dw2_btn" value="Рассчитать dw1 и dw2">
+        <p id="AnswerDw1_2"></p>
+        <p id="AnswerDw2_2"></p>
+        <input type="button" id="Dw1_Dw2_btn_2" value="Рассчитать dw1 и dw2">
     </form>
 
     <h3 align="center"><i>Определение коэффициентов смещения</i></h3>
 
     <form>
-        <p id="Answer_y"></p>
-        <p id="Answer_dy"></p>
-        <input type="button" id="y_dy_btn" value="Рассчитать y и dy">
+        <p id="Answer_y_2"></p>
+        <p id="Answer_dy_2"></p>
+        <input type="button" id="y_dy_btn_2" value="Рассчитать y и dy">
     </form>
 
     <h3 align="center"><i>Определение диаметров зубьев</i></h3>
 
     <form>
-        <p id="Answer_da"></p>
-        <p id="Answer_df"></p>
-        <input type="button" id="da_df_btn" value="Рассчитать da и df">
+        <p id="Answer_da_2"></p>
+        <p id="Answer_df_2"></p>
+        <input type="button" id="da_df_btn_2" value="Рассчитать da и df">
     </form>
 </div>
 

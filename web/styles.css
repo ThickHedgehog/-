@@ -35,7 +35,8 @@ select {
 }
 
 #AnswerA, #AnswerAt, #AnswerAtw, #AnswerXe, #SelectedAngle1, #SelectedAngle2, #SelectedAngle_1, #SelectedAngle_2,
-#answer_awt, #answer_aw {
+#answer_awt, #answer_aw, #AnswerD1, #AnswerD2, #AnswerDw1, #AnswerDw2, #Answer_y, #Answer_dy, #Answer_da, #Answer_df,
+#AnswerD1_2, #AnswerD2_2, #AnswerDw1_2, #AnswerDw2_2, #Answer_y_2, #Answer_dy_2, #Answer_da_2, #Answer_df_2 {
     text-align: center;
     color: #d1d3e3;
     font-size: 1.3em;
@@ -45,7 +46,8 @@ select {
 #Distance_AW, #Module_M, #Angle_b, #A_btn, #Angles_btn, #Kinematic_btn1, #Kinematic_btn2, #Power_btn1, #Power_btn2,
 #Power_btn3, #Kinematic_factor_btn1, #Kinematic_factor_btn2, #Power_factor_btn1, #Power_factor_btn2,
 #Power_factor_btn3, #Sum_Xe, #Tooth_z2, #Tooth_z1, #AWT_btn, #AW_btn, #D1_D2_btn, #Dw1_Dw2_btn, #y_dy_btn,
-#da_df_btn, #Quantity_Z1, #Quantity_Z2, #Sum_Xe_btn, #Tooth_angle, #Long_a {
+#da_df_btn, #Quantity_Z1, #Quantity_Z2, #Sum_Xe_btn, #Tooth_angle, #Long_a, #Module_M2, #D1_D2_btn_2, #Dw1_Dw2_btn_2,
+#y_dy_btn_2, #da_df_btn_2 {
     padding: 10px;
     margin: 1%;
     background-color: #252e38;
@@ -59,7 +61,7 @@ select {
 
 #A_btn, #Angles_btn, #Kinematic_btn1, #Kinematic_btn2, #Power_btn1, #Power_btn2, #Power_btn3, #Kinematic_factor_btn1,
 #Kinematic_factor_btn2, #Power_factor_btn1, #Power_factor_btn2, #Power_factor_btn3, #AWT_btn, #AW_btn, #D1_D2_btn,
-#Dw1_Dw2_btn, #y_dy_btn, #da_df_btn, #Sum_Xe_btn {
+#Dw1_Dw2_btn, #y_dy_btn, #da_df_btn, #Sum_Xe_btn, #D1_D2_btn_2, #Dw1_Dw2_btn_2, #y_dy_btn_2, #da_df_btn_2 {
     cursor: pointer;
     width: 250px;
 }
@@ -67,7 +69,8 @@ select {
 #A_btn:hover, #Angles_btn:hover, #Kinematic_btn1:hover, #Kinematic_btn2:hover, #Power_btn1:hover, #Power_btn2:hover,
 #Power_btn3:hover, #Kinematic_factor_btn1:hover, #Kinematic_factor_btn2:hover, #Power_factor_btn1:hover,
 #Power_factor_btn2:hover, #Power_factor_btn3:hover, #AWT_btn:hover, #AW_btn:hover, #D1_D2_btn:hover,
-#Dw1_Dw2_btn:hover, #y_dy_btn:hover, #da_df_btn:hover, #Sum_Xe_btn:hover {
+#Dw1_Dw2_btn:hover, #y_dy_btn:hover, #da_df_btn:hover, #Sum_Xe_btn:hover, #D1_D2_btn_2:hover, #Dw1_Dw2_btn_2:hover,
+#y_dy_btn_2:hover, #da_df_btn_2:hover {
     color: #fff;
     background-color: #2285f5;
 }
