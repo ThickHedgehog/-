@@ -9,6 +9,23 @@ def inv(a):
     return a
 
 
+x1, x2 = 0, 0
+
+
+@eel.expose
+def select_x1_x2(num_btn):
+    global x1, x2
+    if num_btn == 1:
+        x1 = 0
+        x2 = 0
+    elif num_btn == 2:
+        x1 = 0.3
+        x2 = -0.3
+    elif num_btn == 3:
+        x1 = 0.5
+        x2 = -0.5
+
+
 # Расчет при заданном aw
 @eel.expose
 def calc_a(z1, z2, m, b):
@@ -189,13 +206,12 @@ def calc_dy_2(xe, z1, z2, at, a, m):
 
 
 @eel.expose
-def calc_da1_1(aw, z1, z2, m, b, x1):
+def calc_da1_1(aw, z1, z2, m, b):
     z1 = float(z1)
     z2 = float(z2)
     m = float(m)
     b = float(b)
     aw = float(aw)
-    x1 = float(x1)
     d1 = calc_d1(z1, m, b)
     dy = calc_dy_1(aw, z1, z2, m, b)
     da1 = d1 + 2 * (1 + x1 - dy) * m
@@ -203,7 +219,7 @@ def calc_da1_1(aw, z1, z2, m, b, x1):
 
 
 @eel.expose
-def calc_da1_2(xe, z1, z2, at, a, m, x1, b):
+def calc_da1_2(xe, z1, z2, at, a, m, b):
     z1 = float(z1)
     z2 = float(z2)
     xe = float(xe)
@@ -211,7 +227,6 @@ def calc_da1_2(xe, z1, z2, at, a, m, x1, b):
     a = float(a)
     b = float(b)
     m = float(m)
-    x1 = float(x1)
     d1 = calc_d1(z1, m, b)
     dy = calc_dy_2(xe, z1, z2, at, a, m)
     da1 = d1 + 2 * (1 + x1 - dy) * m
@@ -219,13 +234,12 @@ def calc_da1_2(xe, z1, z2, at, a, m, x1, b):
 
 
 @eel.expose
-def calc_da2_1(aw, z1, z2, m, b, x2):
+def calc_da2_1(aw, z1, z2, m, b):
     z1 = float(z1)
     z2 = float(z2)
     m = float(m)
     b = float(b)
     aw = float(aw)
-    x2 = float(x2)
     d2 = calc_d2(z2, m, b)
     dy = calc_dy_1(aw, z1, z2, m, b)
     da2 = d2 + 2 * (1 + x2 - dy) * m
@@ -233,7 +247,7 @@ def calc_da2_1(aw, z1, z2, m, b, x2):
 
 
 @eel.expose
-def calc_da2_2(xe, z1, z2, at, a, m, x2, b):
+def calc_da2_2(xe, z1, z2, at, a, m, b):
     z1 = float(z1)
     z2 = float(z2)
     xe = float(xe)
@@ -241,7 +255,6 @@ def calc_da2_2(xe, z1, z2, at, a, m, x2, b):
     a = float(a)
     m = float(m)
     b = float(b)
-    x2 = float(x2)
     d2 = calc_d2(z2, m, b)
     dy = calc_dy_2(xe, z1, z2, at, a, m)
     da2 = d2 + 2 * (1 + x2 - dy) * m
@@ -249,9 +262,8 @@ def calc_da2_2(xe, z1, z2, at, a, m, x2, b):
 
 
 @eel.expose
-def calc_df1(z1, m, b, x1):
+def calc_df1(z1, m, b):
     m = float(m)
-    x1 = float(x1)
     z1 = float(z1)
     b = float(b)
     d1 = calc_d1(z1, m, b)
@@ -260,9 +272,8 @@ def calc_df1(z1, m, b, x1):
 
 
 @eel.expose
-def calc_df2(z2, m, b, x2):
+def calc_df2(z2, m, b):
     m = float(m)
-    x2 = float(x2)
     z2 = float(z2)
     b = float(b)
     d2 = calc_d2(z2, m, b)

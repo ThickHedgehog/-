@@ -27,30 +27,31 @@
     <h2 align="center"><i>Определение делительного межосевого расстояния</i></h2>
 
     <form>
-        <input type="text" id="Distance_AW" placeholder="Введите межосевое расстояние">
-        <input type="text" id="Module_M" placeholder="Введите модуль М">
-        <input type="text" id="Angle_b" placeholder="Введите угол b">
+        <input class="input_and_btn" type="text" id="Distance_AW" placeholder="Введите межосевое расстояние">
+        <input class="input_and_btn" type="text" id="Module_M" placeholder="Введите модуль М">
+        <input class="input_and_btn" type="text" id="Angle_b" placeholder="Введите угол b">
         <br/>
-        <input type="text" id="Quantity_Z1" placeholder="Введите число зубьев Z1">
-        <input type="text" id="Quantity_Z2" placeholder="Введите число зубьев Z2">
+        <input class="input_and_btn" type="text" id="Quantity_Z1" placeholder="Введите число зубьев Z1">
+        <input class="input_and_btn" type="text" id="Quantity_Z2" placeholder="Введите число зубьев Z2">
         <br/>
-        <p id="AnswerA"></p>
-        <input type="button" id="A_btn" value="Рассчитать a" onclick="CalcA()">
+        <p class="Answer" id="AnswerA"></p>
+        <input class="input_and_btn btn" type="button" id="A_btn" value="Рассчитать a" onclick="CalcA()">
     </form>
 
     <h2 align="center"><i>Определение углов at и atw</i></h2>
 
     <form>
-        <p id="AnswerAt"></p>
-        <p id="AnswerAtw"></p>
-        <input type="button" id="Angles_btn" value="Рассчитать углы" onclick="CalcAt(); CalcAtw()">
+        <p class="Answer" id="AnswerAt"></p>
+        <p class="Answer" id="AnswerAtw"></p>
+        <input class="input_and_btn btn" type="button" id="Angles_btn" value="Рассчитать углы"
+               onclick="CalcAt(); CalcAtw()">
     </form>
 
     <h2 align="center"><i>Коэффициента суммы смещений</i></h2>
 
     <form>
-        <p id="AnswerXe"></p>
-        <input type="button" id="Sum_Xe_btn" value="Рассчитать Xe" onclick="CalcXe()">
+        <p class="Answer" id="AnswerXe"></p>
+        <input class="input_and_btn btn" type="button" id="Sum_Xe_btn" value="Рассчитать Xe" onclick="CalcXe()">
     </form>
 
     <h2 align="center"><i>Определение коэффициентов смещения</i></h2>
@@ -63,53 +64,61 @@
     </select>
 
     <form id="kinematic_div">
-        <p id="SelectedAngle1"></p>
-        <input type="button" id="Kinematic_btn1" value="x1 = 0 и x2 = 0"
-               onclick="SelectedAngle('SelectedAngle1', this)">
-        <input type="button" id="Kinematic_btn2" value="x1 = 0.3 и x2 = -0.3"
-               onclick="SelectedAngle('SelectedAngle1', this)">
+        <p class="Answer" id="SelectedAngle1"></p>
+        <input class="input_and_btn btn" type="button" id="Kinematic_btn1" value="x1 = 0 и x2 = 0"
+               onclick="SelectedAngle('SelectedAngle1', this); SelectX(this)">
+        <input class="input_and_btn btn" type="button" id="Kinematic_btn2" value="x1 = 0.3 и x2 = -0.3"
+               onclick="SelectedAngle('SelectedAngle1', this); SelectX(this)">
     </form>
 
     <form id="power_div">
-        <p id="SelectedAngle2"></p>
-        <input type="button" id="Power_btn1" value="x1 = 0 и x2 = 0" onclick="SelectedAngle('SelectedAngle2', this)">
-        <input type="button" id="Power_btn2" value="x1 = 0.3 и x2 = -0.3"
-               onclick="SelectedAngle('SelectedAngle2', this)">
-        <input type="button" id="Power_btn3" value="x1 = 0.5 и x2 = -0.5"
-               onclick="SelectedAngle('SelectedAngle2', this)">
+        <p class="Answer" id="SelectedAngle2"></p>
+        <input class="input_and_btn btn" type="button" id="Power_btn1" value="x1 = 0 и x2 = 0"
+               onclick="SelectedAngle('SelectedAngle2', this); SelectX(this)">
+        <input class="input_and_btn btn" type="button" id="Power_btn2" value="x1 = 0.3 и x2 = -0.3"
+               onclick="SelectedAngle('SelectedAngle2', this); SelectX(this)">
+        <input class="input_and_btn btn" type="button" id="Power_btn3" value="x1 = 0.5 и x2 = -0.5"
+               onclick="SelectedAngle('SelectedAngle2', this); SelectX(this)">
     </form>
 
     <h2 align="center">Расчет диаметров зубчатых колес</h2>
     <h3 align="center"><i>Определение длительных диаметров</i></h3>
 
     <form>
-        <p id="AnswerD1"></p>
-        <p id="AnswerD2"></p>
-        <input type="button" id="D1_D2_btn" value="Рассчитать d1 и d2" onclick="CalcD1_1(); CalcD2_1()">
+        <p class="Answer" id="AnswerD1"></p>
+        <p class="Answer" id="AnswerD2"></p>
+        <input class="input_and_btn btn" type="button" id="D1_D2_btn" value="Рассчитать d1 и d2"
+               onclick="CalcD1_1(); CalcD2_1()">
     </form>
 
     <h3 align="center"><i>Определение начальных диаметров</i></h3>
 
     <form>
-        <p id="AnswerDw1"></p>
-        <p id="AnswerDw2"></p>
-        <input type="button" id="Dw1_Dw2_btn" value="Рассчитать dw1 и dw2">
+        <input class="input_and_btn" type="text" id="Count_u" placeholder="Введите коэффициент u">
+        <p class="Answer" id="AnswerDw1"></p>
+        <p class="Answer" id="AnswerDw2"></p>
+        <input class="input_and_btn btn" type="button" id="Dw1_Dw2_btn" value="Рассчитать dw1 и dw2"
+               onclick="CalcDw1_1(); CalcDw2_1()">
     </form>
 
     <h3 align="center"><i>Определение коэффициентов смещения</i></h3>
 
     <form>
-        <p id="Answer_y"></p>
-        <p id="Answer_dy"></p>
-        <input type="button" id="y_dy_btn" value="Рассчитать y и dy">
+        <p class="Answer" id="Answer_y"></p>
+        <p class="Answer" id="Answer_dy"></p>
+        <input class="input_and_btn btn" type="button" id="y_dy_btn" value="Рассчитать y и dy"
+               onclick="CalcY_1(); CalcDY_1()">
     </form>
 
     <h3 align="center"><i>Определение диаметров зубьев</i></h3>
 
     <form>
-        <p id="Answer_da"></p>
-        <p id="Answer_df"></p>
-        <input type="button" id="da_df_btn" value="Рассчитать da и df">
+        <p class="Answer" id="Answer_da1"></p>
+        <p class="Answer" id="Answer_da2"></p>
+        <p class="Answer" id="Answer_df1"></p>
+        <p class="Answer" id="Answer_df2"></p>
+        <input class="input_and_btn btn" type="button" id="da_df_btn" value="Рассчитать da и df"
+               onclick="CalcDa1_1(); CalcDa2_1(); CalcDf1_1(); CalcDf2_1()">
     </form>
 </div>
 
@@ -125,73 +134,81 @@
     </select>
 
     <form id="kinematic_factor_div">
-        <p id="SelectedAngle_1"></p>
-        <input type="button" id="Kinematic_factor_btn1" value="x1 = 0 и x2 = 0"
-               onclick="SelectedAngle('SelectedAngle_1', this)">
-        <input type="button" id="Kinematic_factor_btn2" value="x1 = 0.3 и x2 = -0.3"
-               onclick="SelectedAngle('SelectedAngle_1', this)">
+        <p class="Answer" id="SelectedAngle_1"></p>
+        <input class="input_and_btn btn" type="button" id="Kinematic_factor_btn1" value="x1 = 0 и x2 = 0"
+               onclick="SelectedAngle('SelectedAngle_1', this); SelectX(this)">
+        <input class="input_and_btn btn" type="button" id="Kinematic_factor_btn2" value="x1 = 0.3 и x2 = -0.3"
+               onclick="SelectedAngle('SelectedAngle_1', this); SelectX(this)">
     </form>
 
     <form id="power_factor_div">
-        <p id="SelectedAngle_2"></p>
-        <input type="button" id="Power_factor_btn1" value="x1 = 0 и x2 = 0"
-               onclick="SelectedAngle('SelectedAngle_2', this)">
-        <input type="button" id="Power_factor_btn2" value="x1 = 0.3 и x2 = -0.3"
-               onclick="SelectedAngle('SelectedAngle_2', this)">
-        <input type="button" id="Power_factor_btn3" value="x1 = 0.5 и x2 = -0.5"
-               onclick="SelectedAngle('SelectedAngle_2', this)">
+        <p class="Answer" id="SelectedAngle_2"></p>
+        <input class="input_and_btn btn" type="button" id="Power_factor_btn1" value="x1 = 0 и x2 = 0"
+               onclick="SelectedAngle('SelectedAngle_2', this); SelectX(this)">
+        <input class="input_and_btn btn" type="button" id="Power_factor_btn2" value="x1 = 0.3 и x2 = -0.3"
+               onclick="SelectedAngle('SelectedAngle_2', this); SelectX(this)">
+        <input class="input_and_btn btn" type="button" id="Power_factor_btn3" value="x1 = 0.5 и x2 = -0.5"
+               onclick="SelectedAngle('SelectedAngle_2', this); SelectX(this)">
     </form>
 
     <form>
-        <input type="text" id="Sum_Xe" placeholder="Введите коэффициент Xe">
-        <input type="text" id="Tooth_z1" placeholder="Введите число зубьев Z1">
-        <input type="text" id="Tooth_z2" placeholder="Введите число зубьев Z2">
+        <input class="input_and_btn" type="text" id="Sum_Xe" placeholder="Введите коэффициент Xe">
+        <input class="input_and_btn" type="text" id="Tooth_z1" placeholder="Введите число зубьев Z1">
+        <input class="input_and_btn" type="text" id="Tooth_z2" placeholder="Введите число зубьев Z2">
         <br/>
-        <input type="text" id="Tooth_angle" placeholder="Введите угол профиля зуба at">
-        <input type="text" id="Long_a" placeholder="Введите коэффициент a">
+        <input class="input_and_btn" type="text" id="Tooth_angle" placeholder="Введите угол профиля зуба at">
+        <input class="input_and_btn" type="text" id="Long_a" placeholder="Введите коэффициент a">
     </form>
     <form>
-        <p id="answer_awt"></p>
-        <input type="button" id="AWT_btn" value="Рассчитать awt" onclick="CalcAtw2()">
+        <p class="Answer" id="answer_awt"></p>
+        <input class="input_and_btn btn" type="button" id="AWT_btn" value="Рассчитать awt" onclick="CalcAtw2()">
     </form>
     <h2 align="center"><i>Определение межосевого расстояния</i></h2>
     <form>
-        <p id="answer_aw"></p>
-        <input type="button" id="AW_btn" value="Рассчитать aw" onclick="CalcAw()">
+        <p class="Answer" id="answer_aw"></p>
+        <input class="input_and_btn btn" type="button" id="AW_btn" value="Рассчитать aw" onclick="CalcAw()">
     </form>
 
     <h2 align="center">Расчет диаметров зубчатых колес</h2>
     <h3 align="center"><i>Определение длительных диаметров</i></h3>
 
     <form>
-        <input type="text" id="Module_M2" placeholder="Введите модуль М">
-        <p id="AnswerD1_2"></p>
-        <p id="AnswerD2_2"></p>
-        <input type="button" id="D1_D2_btn_2" value="Рассчитать d1 и d2">
+        <input class="input_and_btn" type="text" id="Module_M2" placeholder="Введите модуль М">
+        <input class="input_and_btn" type="text" id="Angle_b2" placeholder="Введите угол b">
+        <p class="Answer" id="AnswerD1_2"></p>
+        <p class="Answer" id="AnswerD2_2"></p>
+        <input class="input_and_btn btn" type="button" id="D1_D2_btn_2" value="Рассчитать d1 и d2"
+               onclick="CalcD1_2(); CalcD2_2()">
     </form>
 
     <h3 align="center"><i>Определение начальных диаметров</i></h3>
 
     <form>
-        <p id="AnswerDw1_2"></p>
-        <p id="AnswerDw2_2"></p>
-        <input type="button" id="Dw1_Dw2_btn_2" value="Рассчитать dw1 и dw2">
+        <input class="input_and_btn" type="text" id="Count_u2" placeholder="Введите коэффициент u">
+        <p class="Answer" id="AnswerDw1_2"></p>
+        <p class="Answer" id="AnswerDw2_2"></p>
+        <input class="input_and_btn btn" type="button" id="Dw1_Dw2_btn_2" value="Рассчитать dw1 и dw2"
+               onclick="CalcDw1_2(); CalcDw2_2()">
     </form>
 
     <h3 align="center"><i>Определение коэффициентов смещения</i></h3>
 
     <form>
-        <p id="Answer_y_2"></p>
-        <p id="Answer_dy_2"></p>
-        <input type="button" id="y_dy_btn_2" value="Рассчитать y и dy">
+        <p class="Answer" id="Answer_y_2"></p>
+        <p class="Answer" id="Answer_dy_2"></p>
+        <input class="input_and_btn btn" type="button" id="y_dy_btn_2" value="Рассчитать y и dy"
+               onclick="CalcY_2(); CalcDY_2()">
     </form>
 
     <h3 align="center"><i>Определение диаметров зубьев</i></h3>
 
     <form>
-        <p id="Answer_da_2"></p>
-        <p id="Answer_df_2"></p>
-        <input type="button" id="da_df_btn_2" value="Рассчитать da и df">
+        <p class="Answer" id="Answer_da1_2"></p>
+        <p class="Answer" id="Answer_da2_2"></p>
+        <p class="Answer" id="Answer_df1_2"></p>
+        <p class="Answer" id="Answer_df2_2"></p>
+        <input class="input_and_btn btn" type="button" id="da_df_btn_2" value="Рассчитать da и df"
+               onclick="CalcDa1_2(); CalcDa2_2(); CalcDf1_2(); CalcDf2_2()">
     </form>
 </div>
 
