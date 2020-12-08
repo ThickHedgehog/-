@@ -77,7 +77,7 @@
                onclick="SelectedAngle('SelectedAngle2', this); SelectX(this)">
         <input class="input_and_btn btn" type="button" id="Power_btn2" value="x1 = 0.3 и x2 = -0.3"
                onclick="SelectedAngle('SelectedAngle2', this); SelectX(this)">
-        <input class="input_and_btn btn" type="button" id="Power_btn3" value="x1 = 0.5 и x2 = -0.5"
+        <input class="input_and_btn btn" type="button" id="Power_btn3" value="x1 = 0.5 и x2 = 0.5"
                onclick="SelectedAngle('SelectedAngle2', this); SelectX(this)">
     </form>
 
@@ -120,6 +120,14 @@
         <input class="input_and_btn btn" type="button" id="da_df_btn" value="Рассчитать da и df"
                onclick="CalcDa1_1(); CalcDa2_1(); CalcDf1_1(); CalcDf2_1()">
     </form>
+
+    <h1 align="center">Работа с базой данных</h1>
+
+    <p class="Answer" id="Answer_DB_Error_1"></p>
+    <form>
+        <input class="input_and_btn btn" type="button" id="create_db_for_aw" value="Загрузить расчеты в БД"
+               onclick="CreateDB_1()">
+    </form>
 </div>
 
 <!-- при заданных коэффициента смещения x1 и x2 -->
@@ -147,7 +155,7 @@
                onclick="SelectedAngle('SelectedAngle_2', this); SelectX(this)">
         <input class="input_and_btn btn" type="button" id="Power_factor_btn2" value="x1 = 0.3 и x2 = -0.3"
                onclick="SelectedAngle('SelectedAngle_2', this); SelectX(this)">
-        <input class="input_and_btn btn" type="button" id="Power_factor_btn3" value="x1 = 0.5 и x2 = -0.5"
+        <input class="input_and_btn btn" type="button" id="Power_factor_btn3" value="x1 = 0.5 и x2 = 0.5"
                onclick="SelectedAngle('SelectedAngle_2', this); SelectX(this)">
     </form>
 
@@ -209,6 +217,14 @@
         <p class="Answer" id="Answer_df2_2"></p>
         <input class="input_and_btn btn" type="button" id="da_df_btn_2" value="Рассчитать da и df"
                onclick="CalcDa1_2(); CalcDa2_2(); CalcDf1_2(); CalcDf2_2()">
+    </form>
+
+    <h1 align="center">Работа с базой данных</h1>
+
+    <p class="Answer" id="Answer_DB_Error_2"></p>
+    <form>
+        <input class="input_and_btn btn" type="button" id="create_db_for_x" value="Загрузить расчеты в БД"
+               onclick="CreateDB_2()">
     </form>
 </div>
 

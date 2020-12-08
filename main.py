@@ -1,7 +1,21 @@
 import eel
 import math
+import sqlite3
 
 eel.init("web")
+
+db = sqlite3.connect("Database.db")
+cur = db.cursor()
+cur.execute("PRAGMA foreign_keys = on")
+cur.execute("CREATE TABLE IF NOT EXISTS Knot(ID INT primary key)")
+cur.execute("CREATE TABLE IF NOT EXISTS Broadcast(ID INT, aw REAL, a REAL, at REAL, atw REAL, d1 REAL, d2 REAL,"
+            "dw1 REAL, dw2 REAL, y REAL, dy REAL, da1 REAL, da2 REAL, df1 REAL, df2 REAL,"
+            "FOREIGN KEY (ID) REFERENCES Knot (ID) ON DELETE CASCADE ON UPDATE CASCADE)")
+cur.execute("CREATE TABLE IF NOT EXISTS Detail(ID INT, z1 REAL, z2 REAL, m REAL, b REAL, a REAL, aw REAL, xe REAL,"
+            "at REAL, u REAL, x1 REAL, x2 REAL,"
+            "FOREIGN KEY (ID) REFERENCES Knot (ID) ON DELETE CASCADE ON UPDATE CASCADE)")
+
+x1, x2 = 0, 0
 
 
 def inv(a):
@@ -9,7 +23,40 @@ def inv(a):
     return a
 
 
-x1, x2 = 0, 0
+@eel.expose
+def count_id():
+    with db:
+        cur.execute("SELECT ID FROM Knot")
+        ids = cur.fetchall()
+    ids.reverse()
+    if not ids:
+        return 0
+    else:
+        return ids[0]
+
+
+@eel.expose
+def into_DB_Aw(id, A, At, Atw, Xe, D1_1, D2_1, Dw1_1, Dw2_1, Y_1, DY_1, Da1_1, Da2_1, Df1_1, Df2_1, z1, z2, m, b, aw,
+               u):
+    cur.execute(f"INSERT INTO Knot(ID) VALUES (?)", (id,))
+    cur.execute(f"INSERT INTO Broadcast(ID, a, at, atw, d1, d2, dw1, dw2, y, dy, da1, da2, df1, df2) VALUES (?, ?, ?,"
+                f"?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                (id, A, At, Atw, D1_1, D2_1, Dw1_1, Dw2_1, Y_1, DY_1, Da1_1, Da2_1, Df1_1, Df2_1))
+    cur.execute(f"INSERT INTO Detail(ID, z1, z2, m, b, aw, xe, u, x1, x2) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                (id, z1, z2, m, b, aw, Xe, u, x1, x2))
+    db.commit()
+
+
+@eel.expose
+def into_DB_X(id, Atw2, Aw, D1_2, D2_2, Dw1_2, Dw2_2, Y_2, DY_2, Da1_2, Da2_2, Df1_2, Df2_2, z1, z2, m, b, a, at, xe,
+              u):
+    cur.execute(f"INSERT INTO Knot(ID) VALUES (?)", (id,))
+    cur.execute(f"INSERT INTO Broadcast(ID, aw, atw, d1, d2, dw1, dw2, y, dy, da1, da2, df1, df2) VALUES (?, ?, ?, ?,"
+                f"?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                (id, Aw, Atw2, D1_2, D2_2, Dw1_2, Dw2_2, Y_2, DY_2, Da1_2, Da2_2, Df1_2, Df2_2))
+    cur.execute(f"INSERT INTO Detail(ID, z1, z2, m, b, a, xe, at, u, x1, x2) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                (id, z1, z2, m, b, a, xe, at, u, x1, x2))
+    db.commit()
 
 
 @eel.expose
@@ -23,7 +70,7 @@ def select_x1_x2(num_btn):
         x2 = -0.3
     elif num_btn == 3:
         x1 = 0.5
-        x2 = -0.5
+        x2 = 0.5
 
 
 # Расчет при заданном aw
@@ -162,7 +209,7 @@ def calc_y_1(aw, z1, z2, m, b):
     b = float(b)
     aw = float(aw)
     a = calc_a(z1, z2, m, b)
-    y = (aw - a) * m
+    y = (aw - a) / m
     return y
 
 
@@ -175,7 +222,7 @@ def calc_y_2(xe, z1, z2, at, a, m):
     a = float(a)
     m = float(m)
     aw = calc_aw(xe, z1, z2, at, a)
-    y = (aw - a) * m
+    y = (aw - a) / m
     return y
 
 
