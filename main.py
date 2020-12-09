@@ -28,11 +28,99 @@ def count_id():
     with db:
         cur.execute("SELECT ID FROM Knot")
         ids = cur.fetchall()
-    ids.reverse()
-    if not ids:
-        return 0
-    else:
-        return ids[0]
+        return len(ids)
+
+
+@eel.expose
+def DB_to_JS_1(sort):
+    if sort == 0:
+        with db:
+            cur.execute("SELECT * FROM Broadcast")
+            row = cur.fetchall()
+        return row
+    elif sort == 1:
+        with db:
+            cur.execute("SELECT * FROM Broadcast ORDER BY ID")
+            row = cur.fetchall()
+        return row
+    elif sort == 2:
+        with db:
+            cur.execute("SELECT * FROM Broadcast ORDER BY aw")
+            row = cur.fetchall()
+        return row
+    elif sort == 3:
+        with db:
+            cur.execute("SELECT * FROM Broadcast ORDER BY a")
+            row = cur.fetchall()
+        return row
+    elif sort == 4:
+        with db:
+            cur.execute("SELECT * FROM Broadcast ORDER BY at")
+            row = cur.fetchall()
+        return row
+    elif sort == 5:
+        with db:
+            cur.execute("SELECT * FROM Broadcast ORDER BY atw")
+            row = cur.fetchall()
+        return row
+    elif sort == 6:
+        with db:
+            cur.execute("SELECT * FROM Broadcast ORDER BY d1")
+            row = cur.fetchall()
+        return row
+    elif sort == 7:
+        with db:
+            cur.execute("SELECT * FROM Broadcast ORDER BY d2")
+            row = cur.fetchall()
+        return row
+    elif sort == 8:
+        with db:
+            cur.execute("SELECT * FROM Broadcast ORDER BY dw1")
+            row = cur.fetchall()
+        return row
+    elif sort == 9:
+        with db:
+            cur.execute("SELECT * FROM Broadcast ORDER BY dw2")
+            row = cur.fetchall()
+        return row
+    elif sort == 10:
+        with db:
+            cur.execute("SELECT * FROM Broadcast ORDER BY y")
+            row = cur.fetchall()
+        return row
+    elif sort == 11:
+        with db:
+            cur.execute("SELECT * FROM Broadcast ORDER BY dy")
+            row = cur.fetchall()
+        return row
+    elif sort == 12:
+        with db:
+            cur.execute("SELECT * FROM Broadcast ORDER BY da1")
+            row = cur.fetchall()
+        return row
+    elif sort == 13:
+        with db:
+            cur.execute("SELECT * FROM Broadcast ORDER BY da2")
+            row = cur.fetchall()
+        return row
+    elif sort == 14:
+        with db:
+            cur.execute("SELECT * FROM Broadcast ORDER BY df1")
+            row = cur.fetchall()
+        return row
+    elif sort == 15:
+        with db:
+            cur.execute("SELECT * FROM Broadcast ORDER BY df2")
+            row = cur.fetchall()
+        return row
+
+
+@eel.expose
+def DB_to_JS_2():
+    with db:
+        cur.execute("SELECT z1, z2, m, b, a, aw, xe, at, u, x1, x2 FROM Detail")
+        row = cur.fetchall()
+    return row
 
 
 @eel.expose
@@ -56,6 +144,12 @@ def into_DB_X(id, Atw2, Aw, D1_2, D2_2, Dw1_2, Dw2_2, Y_2, DY_2, Da1_2, Da2_2, D
                 (id, Aw, Atw2, D1_2, D2_2, Dw1_2, Dw2_2, Y_2, DY_2, Da1_2, Da2_2, Df1_2, Df2_2))
     cur.execute(f"INSERT INTO Detail(ID, z1, z2, m, b, a, xe, at, u, x1, x2) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
                 (id, z1, z2, m, b, a, xe, at, u, x1, x2))
+    db.commit()
+
+
+@eel.expose
+def delete_from_DB(id):
+    cur.execute("DELETE FROM Knot WHERE Id=?", (id,))
     db.commit()
 
 

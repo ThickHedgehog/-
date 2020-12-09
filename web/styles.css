@@ -96,3 +96,16 @@ select {
     display: none;
     text-align: center;
 }
+
+.DB_table {
+    text-align: center;
+    color: #d1d3e3;
+    font-size: 1.3em;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    padding: 5px;
+}
+
+td {
+    border: solid 3px #2f5399;
+    padding: 5px;
+}

@@ -25,7 +25,7 @@ let flagDf1_1 = false;
 let flagDf1_2 = false;
 let flagDf2_1 = false;
 let flagDf2_2 = false;
-let DB_count = 0;
+let ID = 0;
 let A, At, At_2, Atw, Xe, Atw2, Aw, D1_1, D1_2, D2_1, D2_2, Dw1_1, Dw1_2, Dw2_1, Dw2_2, Y_1, Y_2, DY_1, DY_2, Da1_1,
 Da1_2, Da2_1, Da2_2, Df1_1, Df1_2, Df2_1, Df2_2;
 
@@ -385,7 +385,8 @@ async function CalcDf2_2() {
 }
 
 async function CreateDB_1() {
-    DB_count = await eel.count_id()();
+    let DB_count = await eel.count_id()();
+    let DB_Broadcast = await eel.DB_to_JS_1(0)();
     if (flagA && flagAt && flagAtw && flagXe && flagD1_1 && flagD2_1 && flagDw1_1 && flagDw2_1 && flagY_1 &&
     flagDY_1 && flagDa1_1 && flagDa2_1 && flagDf1_1 && flagDf2_1) {
         flagA = false;
@@ -402,7 +403,13 @@ async function CreateDB_1() {
         flagDa2_1 = false;
         flagDf1_1 = false;
         flagDf2_1 = false;
-        DB_count++;
+
+        ID++;
+        for (i = 0; i < DB_count; i++) {
+            if (ID == DB_Broadcast[i][0]) {
+                ID++;
+            }
+        }
 
         z1 = document.getElementById("Quantity_Z1").value;
         z2 = document.getElementById("Quantity_Z2").value;
@@ -435,7 +442,7 @@ async function CreateDB_1() {
 
         document.getElementById("Answer_DB_Error_1").innerHTML = "";
 
-        await eel.into_DB_Aw(DB_count, A, At, Atw, Xe, D1_1, D2_1, Dw1_1, Dw2_1, Y_1, DY_1, Da1_1, Da2_1, Df1_1, Df2_1,
+        await eel.into_DB_Aw(ID, A, At, Atw, Xe, D1_1, D2_1, Dw1_1, Dw2_1, Y_1, DY_1, Da1_1, Da2_1, Df1_1, Df2_1,
         z1, z2, m, b, aw, u)();
     }
     else {
@@ -444,7 +451,8 @@ async function CreateDB_1() {
 }
 
 async function CreateDB_2() {
-    DB_count = await eel.count_id()();
+    let DB_count = await eel.count_id()();
+    let DB_Broadcast = await eel.DB_to_JS_1(0)();
     if (flagAtw2 && flagAw && flagD1_2 && flagD2_2 && flagDw1_2 && flagDw2_2 && flagY_2 &&
     flagDY_2 && flagDa1_2 && flagDa2_2 && flagDf1_2 && flagDf2_2) {
         flagAtw2 = false;
@@ -459,7 +467,13 @@ async function CreateDB_2() {
         flagDa2_2 = false;
         flagDf1_2 = false;
         flagDf2_2 = false;
-        DB_count++;
+
+        ID++;
+        for (i = 0; i < DB_count; i++) {
+            if (ID == DB_Broadcast[i][0]) {
+                ID++;
+            }
+        }
 
         z1 = document.getElementById("Tooth_z1").value;
         z2 = document.getElementById("Tooth_z2").value;
@@ -494,10 +508,160 @@ async function CreateDB_2() {
 
         document.getElementById("Answer_DB_Error_2").innerHTML = "";
 
-        await eel.into_DB_X(DB_count, Atw2, Aw, D1_2, D2_2, Dw1_2, Dw2_2, Y_2, DY_2, Da1_2, Da2_2, Df1_2, Df2_2, z1, z2, m,
-        b, a, at, xe, u)();
+        await eel.into_DB_X(ID, Atw2, Aw, D1_2, D2_2, Dw1_2, Dw2_2, Y_2, DY_2, Da1_2, Da2_2, Df1_2, Df2_2, z1,
+        z2, m, b, a, at, xe, u)();
     }
     else {
         document.getElementById("Answer_DB_Error_2").innerHTML = "Перед созданием базы данных выполните все расчеты";
+    }
+}
+
+
+async function DeleteFromDB(selected, error) {
+    let DB_count = await eel.count_id()();
+    id = document.getElementById(selected).value;
+    let DB_Broadcast = await eel.DB_to_JS_1(0)();
+    let flagSelected = true;
+
+    for (i = 0; i < DB_count; i++) {
+        if (id == DB_Broadcast[i][0]) {
+            flagSelected = false;
+        }
+    }
+    if (flagSelected) {
+        document.getElementById(error).innerHTML = "Такого номера не существует";
+    }
+    else {
+        document.getElementById(error).innerHTML = "";
+        await eel.delete_from_DB(id);
+    }
+}
+
+async function PrintDB(sort) {
+    let DB_count = await eel.count_id()();
+    let DB_Broadcast = await eel.DB_to_JS_1(sort)();
+    let DB_Detail = await eel.DB_to_JS_2()();
+    let tableArr=['<table class = "DB_table"'];
+    if (DB_count > 0) {
+        tableArr.push('<tr>');
+        tableArr.push('<td> ID </td>');
+        tableArr.push('<td> Aw </td>');
+        tableArr.push('<td> a </td>');
+        tableArr.push('<td> At </td>');
+        tableArr.push('<td> Atw </td>');
+        tableArr.push('<td> d1 </td>');
+        tableArr.push('<td> d2 </td>');
+        tableArr.push('<td> dw1 </td>');
+        tableArr.push('<td> dw2 </td>');
+        tableArr.push('<td> y </td>');
+        tableArr.push('<td> dy </td>');
+        tableArr.push('<td> da1 </td>');
+        tableArr.push('<td> da2 </td>');
+        tableArr.push('<td> df1 </td>');
+        tableArr.push('<td> df2 </td>');
+        tableArr.push('<td> z1 </td>');
+        tableArr.push('<td> z2 </td>');
+        tableArr.push('<td> m </td>');
+        tableArr.push('<td> b </td>');
+        tableArr.push('<td> a </td>');
+        tableArr.push('<td> aw </td>');
+        tableArr.push('<td> xe </td>');
+        tableArr.push('<td> at </td>');
+        tableArr.push('<td> u </td>');
+        tableArr.push('<td> x1 </td>');
+        tableArr.push('<td> x2 </td>');
+        tableArr.push('</tr>');
+    }
+    for (i = 0; i < DB_count; i++) {
+        tableArr.push('<tr>');
+        for (j = 0; j < 15; j++){
+            if (DB_Broadcast[i][j] == null) {
+                tableArr.push('<td> - </td>');
+            }
+            else {
+                tableArr.push('<td>' + DB_Broadcast[i][j] + '</td>');
+            }
+        }
+        for (k = 0; k <= 10; k++){
+            if (DB_Detail[i][k] == null) {
+                tableArr.push('<td> - </td>');
+            }
+            else {
+                tableArr.push('<td>' + DB_Detail[i][k] + '</td>');
+            }
+        }
+        tableArr.push('</tr>');
+    }
+    tableArr.push('</table>');
+    document.getElementById('DB_print').innerHTML = tableArr.join('\n');
+}
+
+function SortDB(element) {
+    selected = element.value;
+
+    switch(selected) {
+        case '0':
+        PrintDB(0);
+        break;
+
+        case '1':
+        PrintDB(1);
+        break;
+
+        case '2':
+        PrintDB(2);
+        break;
+
+        case '3':
+        PrintDB(3);
+        break;
+
+        case '4':
+        PrintDB(4);
+        break;
+
+        case '5':
+        PrintDB(5);
+        break;
+
+        case '6':
+        PrintDB(6);
+        break;
+
+        case '7':
+        PrintDB(7);
+        break;
+
+        case '8':
+        PrintDB(8);
+        break;
+
+        case '9':
+        PrintDB(9);
+        break;
+
+        case '10':
+        PrintDB(10);
+        break;
+
+        case '11':
+        PrintDB(11);
+        break;
+
+        case '12':
+        PrintDB(12);
+        break;
+
+        case '13':
+        PrintDB(13);
+        break;
+
+        case '14':
+        PrintDB(14);
+        break;
+
+        case '15':
+        PrintDB(15);
+        break;
     }
 }

@@ -128,6 +128,41 @@
         <input class="input_and_btn btn" type="button" id="create_db_for_aw" value="Загрузить расчеты в БД"
                onclick="CreateDB_1()">
     </form>
+
+    <h2 align="center">Удаление расчета по номеру</h2>
+
+    <p class="Answer" id="Answer_delete_Error_1"></p>
+    <form>
+        <input class="input_and_btn" type="text" id="Count_id_1" placeholder="Введите номер расчета">
+        <input class="input_and_btn btn" type="button" id="delete_from_DB_1" value="Удалить расчет"
+               onclick="DeleteFromDB('Count_id_1', 'Answer_delete_Error_1')">
+    </form>
+
+    <form>
+        <input class="input_and_btn btn" type="button" id="update_DB_1" value="Вывести / обновить БД"
+               onclick="PrintDB(0)">
+    </form>
+
+    <h3 class="title_params">Сортировать по</h3>
+
+    <select class="select_params" onchange="SortDB(this)">
+        <option value="0">...</option>
+        <option value="1">ID</option>
+        <option value="2">Aw</option>
+        <option value="3">a</option>
+        <option value="4">At</option>
+        <option value="5">Atw</option>
+        <option value="6">d1</option>
+        <option value="7">d2</option>
+        <option value="8">dw1</option>
+        <option value="9">dw2</option>
+        <option value="10">y</option>
+        <option value="11">dy</option>
+        <option value="12">da1</option>
+        <option value="13">da2</option>
+        <option value="14">df1</option>
+        <option value="15">df2</option>
+    </select>
 </div>
 
 <!-- при заданных коэффициента смещения x1 и x2 -->
@@ -226,7 +261,44 @@
         <input class="input_and_btn btn" type="button" id="create_db_for_x" value="Загрузить расчеты в БД"
                onclick="CreateDB_2()">
     </form>
+
+    <h2 align="center">Удаление расчета по номеру</h2>
+
+    <p class="Answer" id="Answer_delete_Error_2"></p>
+    <form>
+        <input class="input_and_btn" type="text" id="Count_id_2" placeholder="Введите номер расчета">
+        <input class="input_and_btn btn" type="button" id="delete_from_DB_2" value="Удалить расчет"
+               onclick="DeleteFromDB('Count_id_2', 'Answer_delete_Error_2')">
+    </form>
+
+    <form>
+        <input class="input_and_btn btn" type="button" id="update_DB_2" value="Вывести / обновить БД"
+               onclick="PrintDB(0)">
+    </form>
+
+    <h3 class="title_params">Сортировать по</h3>
+
+    <select class="select_params" onchange="SortDB(this)">
+        <option value="0">...</option>
+        <option value="1">ID</option>
+        <option value="2">Aw</option>
+        <option value="3">a</option>
+        <option value="4">At</option>
+        <option value="5">Atw</option>
+        <option value="6">d1</option>
+        <option value="7">d2</option>
+        <option value="8">dw1</option>
+        <option value="9">dw2</option>
+        <option value="10">y</option>
+        <option value="11">dy</option>
+        <option value="12">da1</option>
+        <option value="13">da2</option>
+        <option value="14">df1</option>
+        <option value="15">df2</option>
+    </select>
 </div>
+
+<div id="DB_print"></div>
 
 <script src="script.js"></script>
 
