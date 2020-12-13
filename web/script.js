@@ -106,7 +106,7 @@ async function CalcAtw2() {
 
     Atw2 = await eel.calc_atw2(Xe, Z1, Z2, at)();
 
-    document.getElementById("answer_awt").innerHTML = "Угол профиля зуба = " + Atw2;
+    document.getElementById("answer_awt").innerHTML = "Угол atw = " + Atw2;
     flagAtw2 = true;
 }
 
